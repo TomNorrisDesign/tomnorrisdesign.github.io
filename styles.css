@@ -162,3 +162,74 @@ p:last-of-type {
   background-color: var(--primary);
   padding-right: 40px;
 }
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .intro h1 {
+    font-size: 2.5rem;
+  }
+
+  .tagline p {
+    font-size: 1.4rem;
+    margin-top: 0;
+  }
+
+  .tagline p:last-of-type {
+    font-size: 1.2rem;
+  }
+
+  .linkedin {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .linkedin .text {
+    font-size: 14px;
+  }
+
+  .linkedin .svg {
+    height: 18px;
+    width: 18px;
+  }
+
+  .intro {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .intro .linkedin {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro h1 {
+    font-size: 2rem;
+  }
+
+  .tagline p {
+    font-size: 1.2rem;
+  }
+
+  .tagline p:last-of-type {
+    font-size: 1rem;
+  }
+
+  .linkedin {
+    font-size: 15px;
+    padding: 6px;
+  }
+
+  .linkedin .text {
+    font-size: 13px;
+  }
+
+  .linkedin .svg {
+    height: 16px;
+    width: 16px;
+  }
+}
