@@ -1,0 +1,164 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Define Global Color Variables */
+:root {
+  --background: #0f172a; /* Dark blue-gray background */
+  --primary: #3b82f6; /* Bright blue for primary actions */
+  --secondary: #64748b; /* Muted blue-gray for secondary elements */
+  --tertiary: #94a3b8; /* Lighter blue-gray for tertiary elements */
+  --highlight: #f1f5f9; /* Off-white for text and highlights */
+}
+
+/* Set the base font */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background);
+  color: var(--highlight);
+  line-height: 1.6;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+  height: 100vh;
+}
+
+/* Particles Container */
+#particles-js {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* Intro Block */
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.intro h1 {
+  color: var(--highlight);
+  font-size: 4rem;
+  margin-right: 0;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.intro .linkedin {
+  display: inline-block;
+}
+
+.intro .linkedin img {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+}
+
+.intro .linkedin:hover img {
+  transform: scale(1.1);
+}
+
+/* Tagline Block */
+.tagline {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tagline p {
+  color: var(--tertiary);
+  font-size: 1.8rem;
+  margin-top: -10px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Secondary Text */
+p:last-of-type {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--highlight);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.linkedin {
+  background-color: var(--background);
+  border: 1px solid var(--primary);
+  padding: 10px;
+  margin-top: 30px;
+  position: relative;
+  width: fit-content;
+  transition: 0.5s;
+  font-size: 17px;
+  border-radius: 0.4em;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.linkedin .text {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  transition: 0.5s;
+  color: var(--primary);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.linkedin .svg {
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 50% 50%;
+  transform: translateY(-50%) translateX(100px);
+  top: 50%;
+  right: 10px;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  transition-duration: 0.5s;
+  transition-delay: 0;
+  height: 20px;
+  width: 20px;
+  fill: var(--highlight);
+}
+
+.linkedin:hover .text {
+  color: var(--highlight);
+}
+
+.linkedin:hover .svg {
+  opacity: 1;
+  transition-delay: 0.3s;
+  transition-duration: 0.3s;
+  transform: translateY(-50%) translateX(0px);
+}
+
+.linkedin:hover {
+  background-color: var(--primary);
+  padding-right: 40px;
+}
