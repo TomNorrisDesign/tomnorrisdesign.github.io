@@ -168,6 +168,27 @@ a {
   transform: scale(1);
 }
 
+.project-placeholder {
+  background: rgba(100, 116, 139, 0.1);
+  border: 2px dashed var(--secondary);
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.project-placeholder h2 {
+  color: var(--highlight);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.project-placeholder p {
+  color: var(--tertiary);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   body {
@@ -210,6 +231,20 @@ a {
   }
 }
 
+.project-placeholder {
+  padding: 1.5rem;
+  margin: 1.5rem auto;
+  max-width: 90%;
+}
+
+.project-placeholder h2 {
+  font-size: 1.6rem;
+}
+
+.project-placeholder p {
+  font-size: 1rem;
+}
+
 @media (max-width: 480px) {
   .intro h1 {
     font-size: 2rem;
@@ -238,5 +273,18 @@ a {
   .view-work:hover::after {
     height: 250px;
     width: 250px;
+  }
+
+  .project-placeholder {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  .project-placeholder h2 {
+    font-size: 1.4rem;
+  }
+
+  .project-placeholder p {
+    font-size: 0.9rem;
   }
 }
