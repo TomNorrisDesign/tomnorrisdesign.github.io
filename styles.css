@@ -30,6 +30,7 @@ body {
   padding: 20px;
   margin: 0;
   height: 100vh;
+  cursor: crosshair;
 }
 
 /* Particles Container */
@@ -47,7 +48,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 5px;
+  flex-direction: column;
+  text-align: center;
 }
 
 .intro h1 {
@@ -56,21 +58,6 @@ body {
   margin-right: 0;
   font-weight: 600;
   letter-spacing: 1px;
-}
-
-.intro .linkedin {
-  display: inline-block;
-}
-
-.intro .linkedin img {
-  width: 40px;
-  height: 40px;
-  vertical-align: middle;
-  transition: transform 0.3s ease;
-}
-
-.intro .linkedin:hover img {
-  transform: scale(1.1);
 }
 
 /* Tagline Block */
@@ -87,10 +74,9 @@ body {
 .tagline p {
   color: var(--tertiary);
   font-size: 1.8rem;
-  margin-top: -10px;
   font-weight: 500;
-  margin-bottom: 20px;
   line-height: 1.6;
+  margin-bottom: 10px;
 }
 
 /* Secondary Text */
@@ -102,65 +88,84 @@ p:last-of-type {
   line-height: 1.5;
 }
 
-.linkedin {
-  background-color: var(--background);
-  border: 1px solid var(--primary);
-  padding: 10px;
-  margin-top: 30px;
+.view-work {
+  padding: 0.8em 1.7em;
+  margin-top: 20px;
+  background-color: transparent;
+  border-radius: 0.3em;
   position: relative;
-  width: fit-content;
-  transition: 0.5s;
-  font-size: 17px;
-  border-radius: 0.4em;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
   cursor: pointer;
-}
-
-.linkedin .text {
-  position: relative;
-  margin: 0;
-  padding: 0;
   transition: 0.5s;
-  color: var(--primary);
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-.linkedin .svg {
-  pointer-events: none;
-  position: absolute;
-  transform-origin: 50% 50%;
-  transform: translateY(-50%) translateX(100px);
-  top: 50%;
-  right: 10px;
-  margin: 0;
-  padding: 0;
-  opacity: 0;
-  transition-duration: 0.5s;
-  transition-delay: 0;
-  height: 20px;
-  width: 20px;
-  fill: var(--highlight);
-}
-
-.linkedin:hover .text {
+  font-weight: 400;
+  font-size: 17px;
+  border: 1px solid;
+  font-family: inherit;
+  text-transform: uppercase;
   color: var(--highlight);
+  z-index: 1;
+  display: inline-block;
 }
 
-.linkedin:hover .svg {
-  opacity: 1;
-  transition-delay: 0.3s;
-  transition-duration: 0.3s;
-  transform: translateY(-50%) translateX(0px);
+.view-work::before,
+.view-work::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: var(--highlight);
+  transition: 1s ease;
 }
 
-.linkedin:hover {
-  background-color: var(--primary);
-  padding-right: 40px;
+.view-work::before {
+  top: -1em;
+  left: -1em;
+}
+
+.view-work::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+}
+
+.view-work:hover::before,
+.view-work:hover::after {
+  height: 410px;
+  width: 410px;
+}
+
+.view-work:hover {
+  color: rgb(10, 25, 30);
+}
+
+.view-work:active {
+  filter: brightness(0.8);
+}
+
+/* Linkedin */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.name {
+  color: var(--highlight);
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease, letter-spacing 0.3s ease;
+  display: inline-block;
+}
+
+.name:hover {
+  color: var(--primary);
+  transform: scale(1.2);
+  letter-spacing: 1px;
+}
+
+.name:active {
+  transform: scale(1);
 }
 
 /* Mobile Styles */
@@ -182,27 +187,26 @@ p:last-of-type {
     font-size: 1.2rem;
   }
 
-  .linkedin {
-    font-size: 16px;
-    padding: 8px;
-  }
-
-  .linkedin .text {
-    font-size: 20px;
-  }
-
-  .linkedin .svg {
-    height: 20px;
-    width: 20px;
-  }
-
   .intro {
     flex-direction: column;
     align-items: center;
   }
 
-  .intro .linkedin {
-    margin-top: 20px;
+  .view-work {
+    padding: 0.6em 1.4em;
+    font-size: 15px;
+  }
+
+  .view-work::before,
+  .view-work::after {
+    width: 40px;
+    height: 40px;
+  }
+
+  .view-work:hover::before,
+  .view-work:hover::after {
+    height: 300px;
+    width: 300px;
   }
 }
 
@@ -219,17 +223,20 @@ p:last-of-type {
     font-size: 1rem;
   }
 
-  .linkedin {
-    font-size: 15px;
-    padding: 6px;
+  .view-work {
+    padding: 0.5em 1.2em;
+    font-size: 14px;
   }
 
-  .linkedin .text {
-    font-size: 16px;
+  .view-work::before,
+  .view-work::after {
+    width: 30px;
+    height: 30px;
   }
 
-  .linkedin .svg {
-    height: 18px;
-    width: 18px;
+  .view-work:hover::before,
+  .view-work:hover::after {
+    height: 250px;
+    width: 250px;
   }
 }
