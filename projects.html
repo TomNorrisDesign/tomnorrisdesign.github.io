@@ -18,7 +18,7 @@
     />
 
     <!-- Link to CSS file -->
-    <link rel="stylesheet" href="style.css?v=1.0" />
+    <link rel="stylesheet" href="styles.css?v=1.0" />
 
     <!-- Link to Particle.js library -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
@@ -177,19 +177,49 @@
 
     <!-- Loader Script-->
     <script>
-      const loadingOverlay = document.getElementById("loading-overlay");
-      const galleryImages = document.querySelectorAll(".gallery-item.lazyload");
+      document.addEventListener("DOMContentLoaded", () => {
+        const overlay = document.getElementById("loading-overlay");
 
-      let imagesLoaded = 0;
+        // Function to check if all images are loaded
+        const checkImagesLoaded = () => {
+          const images = document.querySelectorAll("img");
+          return Array.from(images).every(
+            (img) => img.complete && img.naturalHeight !== 0
+          );
+        };
 
-      galleryImages.forEach((img) => {
-        img.addEventListener("load", () => {
-          imagesLoaded++;
-          if (imagesLoaded === galleryImages.length) {
-            loadingOverlay.style.opacity = "0";
-            loadingOverlay.style.pointerEvents = "none";
+        // Force lazy-loaded images to load
+        const forceLoadLazyImages = () => {
+          const lazyImages = document.querySelectorAll("img[loading='lazy']");
+          lazyImages.forEach((img) => {
+            if (!img.complete) {
+              // Temporarily remove 'lazy' attribute to force loading
+              img.loading = "eager";
+            }
+          });
+        };
+
+        // Hide the loading overlay when all images are loaded
+        const hideLoadingOverlay = () => {
+          if (checkImagesLoaded()) {
+            overlay.style.opacity = "0";
+            setTimeout(() => {
+              overlay.style.display = "none";
+            }, 300); // Matches the transition time
+          } else {
+            setTimeout(hideLoadingOverlay, 100); // Retry until all images load
           }
+        };
+
+        // Show the overlay if navigating away from the page
+        window.addEventListener("beforeunload", () => {
+          overlay.style.opacity = "1";
+          overlay.style.display = "flex";
         });
+
+        // Initial lazy image force load and hide overlay when done
+        forceLoadLazyImages();
+        hideLoadingOverlay();
       });
     </script>
 
