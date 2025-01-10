@@ -21,7 +21,7 @@
     />
 
     <!-- Link to CSS file -->
-    <link rel="stylesheet" href="styles.css?v=1.0" />
+    <link rel="stylesheet" href="style.css?v=1.0" />
 
     <!-- Link to Particle.js library -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
@@ -33,7 +33,7 @@
     ></script>
 
     <!-- Preload Logo -->
-    <link rel="preload" href="T7.svg" as="image" />
+    <link rel="preload" href="images/T7.svg" as="image" />
   </head>
   <body>
     <!-- Home Icon Link -->
@@ -42,11 +42,13 @@
     </a>
 
     <div id="loading-overlay">
-      <div class="spinner"></div>
       <p class="loading-text">Loading Work...</p>
+      <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+      </div>
     </div>
 
-    <!-- Gallery Container Section -->
+    <!-- Gallery Section -->
     <div class="gallery-container">
       <div class="gallery">
         <a href="/images/WelcomePotter.png" target="_blank">
@@ -182,47 +184,55 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const overlay = document.getElementById("loading-overlay");
+        const progressBar = document.getElementById("progress-bar");
+        const images = document.querySelectorAll("img.lazyload");
+        const totalImages = images.length;
+        let loadedImages = 0;
 
         // Function to check if all images are loaded
         const checkImagesLoaded = () => {
-          const images = document.querySelectorAll("img");
-          return Array.from(images).every(
+          const allLoaded = Array.from(images).every(
             (img) => img.complete && img.naturalHeight !== 0
           );
+          return allLoaded;
         };
 
-        // Force lazy-loaded images to load
-        const forceLoadLazyImages = () => {
-          const lazyImages = document.querySelectorAll("img[loading='lazy']");
-          lazyImages.forEach((img) => {
-            if (!img.complete) {
-              // Temporarily remove 'lazy' attribute to force loading
-              img.loading = "eager";
-            }
-          });
+        // Function to update the progress bar
+        const updateProgressBar = () => {
+          const progress = (loadedImages / totalImages) * 100;
+          progressBar.style.width = `${progress}%`;
         };
 
-        // Hide the loading overlay when all images are loaded
+        // Function to hide the loading overlay after all images are loaded
         const hideLoadingOverlay = () => {
-          if (checkImagesLoaded()) {
-            overlay.style.opacity = "0";
-            setTimeout(() => {
-              overlay.style.display = "none";
-            }, 300); // Matches the transition time
-          } else {
-            setTimeout(hideLoadingOverlay, 100); // Retry until all images load
-          }
+          overlay.style.opacity = 0;
+          setTimeout(() => {
+            overlay.style.display = "none";
+          }, 300);
         };
 
-        // Show the overlay if navigating away from the page
-        window.addEventListener("beforeunload", () => {
-          overlay.style.opacity = "1";
-          overlay.style.display = "flex";
+        // Force load images by setting their src attributes
+        images.forEach((img) => {
+          if (img.dataset.src) {
+            img.src = img.dataset.src; // Set the actual src for the image
+            img.onload = () => {
+              loadedImages++;
+              updateProgressBar();
+
+              if (checkImagesLoaded()) {
+                hideLoadingOverlay();
+              }
+            };
+          }
         });
 
-        // Initial lazy image force load and hide overlay when done
-        forceLoadLazyImages();
-        hideLoadingOverlay();
+        // Ensure the loading overlay goes away after images are loaded
+        const checkInterval = setInterval(() => {
+          if (checkImagesLoaded()) {
+            hideLoadingOverlay();
+            clearInterval(checkInterval);
+          }
+        }, 100);
       });
     </script>
 
