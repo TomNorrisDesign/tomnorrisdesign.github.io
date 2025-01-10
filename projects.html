@@ -18,7 +18,7 @@
     />
 
     <!-- Link to CSS file -->
-    <link rel="stylesheet" href="styles.css?v=1.1" />
+    <link rel="stylesheet" href="styles.css?v=1.2" />
 
     <!-- Link to Particle.js library -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
@@ -37,6 +37,11 @@
     <a href="index.html" class="home-icon">
       <img src="/images/T7.svg" alt="Home" />
     </a>
+
+    <div id="loading-overlay">
+      <div class="spinner"></div>
+      <p class="loading-text">Loading Work...</p>
+    </div>
 
     <!-- Gallery Container Section -->
     <div class="gallery-container">
@@ -169,6 +174,24 @@
         </a>
       </div>
     </div>
+
+    <!-- Loader Script-->
+    <script>
+      const loadingOverlay = document.getElementById("loading-overlay");
+      const galleryImages = document.querySelectorAll(".gallery-item.lazyload");
+
+      let imagesLoaded = 0;
+
+      galleryImages.forEach((img) => {
+        img.addEventListener("load", () => {
+          imagesLoaded++;
+          if (imagesLoaded === galleryImages.length) {
+            loadingOverlay.style.opacity = "0";
+            loadingOverlay.style.pointerEvents = "none";
+          }
+        });
+      });
+    </script>
 
     <!-- Particle.js Container -->
     <div id="particles-js"></div>
