@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="cache-control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <title>T7 | Braintree Town Badge</title>
+
+    <!-- Browser Icon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?" />
+
+    <!-- Link to Google Fonts to load Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="styles.css?v=1.2" />
+
+    <!-- Link to Particle.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+    <!-- Preload Logo -->
+    <link rel="preload" href="images/T7.svg" as="image" />
+  </head>
+  <body>
+    <!-- Home Icon Link -->
+    <a href="index.html" class="home-icon">
+      <img src="/images/T7.svg" alt="Home" />
+    </a>
+
+    <style>
+      .project-container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        color: #f1f5f9;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .project-title {
+        text-align: center;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+      }
+
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .image-container img {
+        width: 100%;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      p {
+        padding: 10px 0;
+        font-size: 1.1em;
+        letter-spacing: 0.3px;
+        color: #f1f5f9;
+      }
+
+      .image-container img:hover {
+        transform: scale(1.05);
+      }
+
+      .project-description {
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .image-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .project-title {
+          font-size: 2em;
+        }
+      }
+    </style>
+
+    <div class="project-container">
+      <h1 class="project-title">Badge Redesign | Braintree Town FC</h1>
+
+      <div class="image-grid">
+        <div class="image-container">
+          <img
+            src="images/braintree/BraintreeTown-OldNew.png"
+            onclick="window.open(this.src)"
+            alt="Braintree Badge Design 1"
+          />
+        </div>
+        <div class="image-container">
+          <img
+            src="images/braintree/BraintreeTown-Instagram.png"
+            onclick="window.open(this.src)"
+            alt="Braintree Badge Design 4"
+          />
+        </div>
+        <div class="image-container">
+          <img
+            src="images/braintree/BraintreeTown-RoundLogo.png"
+            onclick="window.open(this.src)"
+            alt="Braintree Badge Design 2"
+          />
+        </div>
+        <div class="image-container">
+          <img
+            src="images/braintree/BraintreeTown-Kit.png"
+            onclick="window.open(this.src)"
+            alt="Braintree Badge Design 3"
+          />
+        </div>
+      </div>
+
+      <div class="project-description">
+        <p>
+          This is my first badge redesign project, and I managed to complete it
+          in just a few days. It was a great learning curve for me, and I can
+          already see areas where I could do things differently and improve next
+          time. Working on this has shown me the importance of balancing
+          creativity with practicality, especially when redesigning something as
+          meaningful as a football club badge.
+        </p>
+        <p>
+          For Braintree Town FC, my goal was to modernise the badge while still
+          keeping the key elements that make it recognisable and unique to the
+          club. One of the main changes was updating the colours to better match
+          the club's current branding, which helps tie everything together
+          visually. I also decided to use a more modern typeface, Creato Display
+          Bold, which gives the badge a contemporary feel.
+        </p>
+        <p>
+          Throughout the process, I focused on creating a design that would work
+          well across different applications, whether that’s on a kit,
+          merchandise, or digital platforms. It was important to make sure the
+          badge would look sharp and professional in any context, while still
+          reflecting the club’s heritage. I’ve learnt a lot about how small
+          design choices can make a big impact, and this project has given me
+          valuable insight into how to approach similar tasks in the future.
+        </p>
+        <p>
+          Overall, I’m pleased with the result and proud to have taken on this
+          challenge. It’s exciting to see the skills I have learnt through this
+          project, and I'm looking forward to see what I can improve on in my
+          next one.
+        </p>
+      </div>
+    </div>
+
+    <!-- Particle.js Container -->
+    <div id="particles-js"></div>
+
+    <!-- Particle.js Script -->
+    <script>
+      fetch("particlesjs-config.json")
+        .then((response) => response.json())
+        .then((config) => {
+          particlesJS("particles-js", config);
+        })
+        .catch((error) =>
+          console.error("Error loading Particle.js config:", error)
+        );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="cache-control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <title>T7 | Individual</title>
+
+    <!-- Browser Icon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?" />
+
+    <!-- Link to Google Fonts to load Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="styles.css?v=1.2" />
+
+    <!-- Link to Particle.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+    <!-- Link to LazySizes library -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.0/lazysizes.min.js"
+      async
+    ></script>
+
+    <!-- Preload Logo -->
+    <link rel="preload" href="images/T7.svg" as="image" />
+  </head>
+  <body>
+    <!-- Home Icon Link -->
+    <a href="index.html" class="home-icon">
+      <img src="/images/T7.svg" alt="Home" />
+    </a>
+
+    <!-- Projects Container -->
+    <div class="projects-container">
+      <button
+        class="project-button"
+        onclick="window.location.href='social.html'"
+      >
+        Social Media
+      </button>
+      <button
+        class="project-button"
+        onclick="window.location.href='posters.html'"
+      >
+        Posters
+      </button>
+      <button class="project-button" onclick="window.location.href='misc.html'">
+        Miscellaneous
+      </button>
+    </div>
+    <!-- Particle.js Container -->
+    <div id="particles-js"></div>
+
+    <!-- Particle.js Script -->
+    <script>
+      fetch("particlesjs-config.json")
+        .then((response) => response.json())
+        .then((config) => {
+          particlesJS("particles-js", config);
+        })
+        .catch((error) =>
+          console.error("Error loading Particle.js config:", error)
+        );
+    </script>
+  </body>
+</html>

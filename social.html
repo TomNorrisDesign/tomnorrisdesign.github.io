@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="cache-control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <title>T7 | Social</title>
+
+    <!-- Browser Icon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?" />
+
+    <!-- Link to Google Fonts to load Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="styles.css?v=1.2" />
+
+    <!-- Link to Particle.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+    <!-- Link to LazySizes library -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.0/lazysizes.min.js"
+      async
+    ></script>
+
+    <!-- Preload Logo -->
+    <link rel="preload" href="images/T7.svg" as="image" />
+  </head>
+  <body>
+    <!-- Home Icon Link -->
+    <a href="index.html" class="home-icon">
+      <img src="/images/T7.svg" alt="Home" />
+    </a>
+
+    <div id="loading-overlay">
+      <p class="loading-text">Loading...</p>
+      <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="gallery-container">
+      <div class="gallery">
+        <a href="/images/WelcomePotter.png" target="_blank">
+          <img
+            data-src="/images/WelcomePotter.png"
+            alt="Welcome Graham Potter Graphic"
+            class="gallery-item lazyload"
+          />
+        </a>
+        <a href="/images/FullTimeIpswich.png" target="_blank">
+          <img
+            data-src="/images/FullTimeIpswich.png"
+            alt="Full Time West Ham v Ipswich Graphic"
+            class="gallery-item lazyload"
+          />
+        </a>
+        <a href="/images/CoggeshallTownStartingXI.png" target="_blank">
+          <img
+            data-src="/images/CoggeshallTownStartingXI.png"
+            alt="Coggeshall Town Starting XI Graphic"
+            class="gallery-item lazyload"
+          />
+        </a>
+        <a href="/images/TIFOLeaflet.png" target="_blank">
+          <img
+            data-src="/images/TIFOLeaflet.png"
+            alt="TIFO Leaflet"
+            class="gallery-item lazyload"
+          />
+        </a>
+        <a href="/images/RaffleLast.png" target="_blank">
+          <img
+            data-src="/images/RaffleLast.png"
+            alt="Raffle Last Day"
+            class="gallery-item lazyload"
+          />
+        </a>
+      </div>
+    </div>
+
+    <!-- Loader Script-->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const overlay = document.getElementById("loading-overlay");
+        const progressBar = document.getElementById("progress-bar");
+        const images = document.querySelectorAll("img.lazyload");
+        const totalImages = images.length;
+        let loadedImages = 0;
+
+        // Function to check if all images are loaded
+        const checkImagesLoaded = () => {
+          const allLoaded = Array.from(images).every(
+            (img) => img.complete && img.naturalHeight !== 0
+          );
+          return allLoaded;
+        };
+
+        // Function to update the progress bar
+        const updateProgressBar = () => {
+          const progress = (loadedImages / totalImages) * 100;
+          progressBar.style.width = `${progress}%`;
+        };
+
+        // Function to hide the loading overlay after all images are loaded
+        const hideLoadingOverlay = () => {
+          overlay.style.opacity = 0;
+          setTimeout(() => {
+            overlay.style.display = "none";
+          }, 300);
+        };
+
+        // Force load images by setting their src attributes
+        images.forEach((img) => {
+          if (img.dataset.src) {
+            img.src = img.dataset.src; // Set the actual src for the image
+            img.onload = () => {
+              loadedImages++;
+              updateProgressBar();
+
+              if (checkImagesLoaded()) {
+                hideLoadingOverlay();
+              }
+            };
+          }
+        });
+
+        // Ensure the loading overlay goes away after images are loaded
+        const checkInterval = setInterval(() => {
+          if (checkImagesLoaded()) {
+            hideLoadingOverlay();
+            clearInterval(checkInterval);
+          }
+        }, 100);
+      });
+    </script>
+
+    <!-- Particle.js Container -->
+    <div id="particles-js"></div>
+
+    <!-- Particle.js Script -->
+    <script>
+      fetch("particlesjs-config.json")
+        .then((response) => response.json())
+        .then((config) => {
+          particlesJS("particles-js", config);
+        })
+        .catch((error) =>
+          console.error("Error loading Particle.js config:", error)
+        );
+    </script>
+  </body>
+</html>
