@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="cache-control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <title>T7 | Coggeshall Town Badge</title>
+
+    <!-- Browser Icon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?" />
+
+    <!-- Link to Google Fonts to load Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="styles.css?v=1.3" />
+
+    <!-- Link to Particle.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+    <!-- Preload Logo -->
+    <link rel="preload" href="images/T7.svg" as="image" />
+  </head>
+  <body>
+    <!-- Home Icon Link -->
+    <a href="index.html" class="home-icon">
+      <img src="/images/T7.svg" alt="Home" />
+    </a>
+
+    <style>
+      .project-container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        color: #f1f5f9;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .project-title {
+        text-align: center;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+      }
+
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .image-container img {
+        width: 100%;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      p {
+        padding: 10px 0;
+        font-size: 1.1em;
+        letter-spacing: 0.3px;
+        color: #f1f5f9;
+      }
+
+      .image-container img:hover {
+        transform: scale(1.05);
+      }
+
+      .project-description {
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .image-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .project-title {
+          font-size: 2em;
+        }
+      }
+    </style>
+
+    <div class="project-container">
+      <h1 class="project-title">Badge Redesign | Coggeshall Town FC</h1>
+
+      <div class="image-grid">
+        <div class="image-container">
+          <img
+            src="images/coggeshall/CoggeshallTown-Original.png"
+            onclick="window.open(this.src)"
+            alt="Coggeshall Town Original Badge"
+          />
+        </div>
+        <div class="image-container">
+          <img
+            src="images/coggeshall/CoggeshallTown-Redesign.png"
+            onclick="window.open(this.src)"
+            alt="Coggeshall Town Redesigned Badge"
+          />
+        </div>
+        <div class="image-container">
+          <img
+            src="images/coggeshall/CoggeshallTown-Kit.png"
+            onclick="window.open(this.src)"
+            alt="Coggeshall Town Kit"
+          />
+        </div>
+        <div class="image-container">
+          <img
+            src="images/coggeshall/CoggeshallTown-StartingXI.png"
+            onclick="window.open(this.src)"
+            alt="Coggeshall Town Starting XI"
+          />
+        </div>
+      </div>
+
+      <div class="project-description">
+        <p>
+          This was a personal project where I gave the Coggeshall Town FC badge
+          a slight redesign. The original badge already had a strong identity,
+          but I wanted to make it feel cleaner and more aligned while keeping
+          its core look intact. It was a great way to practice working with an
+          existing design and making subtle improvements.
+        </p>
+        <p>
+          One of the key changes was resizing some parts of the badge to improve
+          the overall balance. Adjusting the proportions helped make the design
+          feel more centred and visually consistent. I also updated the
+          typography by using Creato Display, a font I love working with that
+          adds a clean and modern feel.
+        </p>
+        <p>
+          Another important tweak was aligning the "Founded" date with other
+          elements of the badge. This small change made the design look tidier
+          and better put together. These types of tweaks might seem minor, but
+          they can have a big impact on the final result.
+        </p>
+        <p>
+          Even though this wasn’t a client project, it was a good learning
+          experience. It showed me how even small adjustments, like font choice
+          and alignment, can make a logo or badge feel more polished and
+          professional.
+        </p>
+      </div>
+    </div>
+
+    <!-- Particle.js Container -->
+    <div id="particles-js"></div>
+
+    <!-- Particle.js Script -->
+    <script>
+      fetch("particlesjs-config.json")
+        .then((response) => response.json())
+        .then((config) => {
+          particlesJS("particles-js", config);
+        })
+        .catch((error) =>
+          console.error("Error loading Particle.js config:", error)
+        );
+    </script>
+  </body>
+</html>
